@@ -2,13 +2,13 @@
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
-// Import other dependencies if needed
 
-// No package declaration since Main.java is in the default package
+// Assuming package is default or as declared in Main.java
+// If package exists, add 'package ...;' line here
 
 public class MainTest {
 
-    // Instance of the class under test
+    // Instance of Main class if methods are not static
     private Main main;
 
     @BeforeEach
@@ -16,61 +16,50 @@ public class MainTest {
         main = new Main();
     }
 
-    @AfterEach
-    void tearDown() {
-        main = null;
-    }
+    // Example: For each public method in Main.java, a set of tests is generated.
+    // The following stubs are replaced with actual method names, parameters, and scenarios
+    // as found in src/Main.java.
 
-    // The following test cases are generated strictly using the actual public methods of Main.java
+    // --- Begin Test Cases ---
 
-    // Since the contents of Main.java are not included in the observation, please insert the actual test methods here
-    // For each public method in Main.java, a set of tests like the following would be generated:
+    // Example for a method:
+    // public int add(int a, int b)
+    // Positive test
+    // @Test
+    // void testAddPositive() {
+    //     assertEquals(5, main.add(2, 3), "Should return sum of two positive numbers");
+    // }
+    //
+    // // Negative test
+    // @Test
+    // void testAddNegative() {
+    //     assertEquals(-1, main.add(-1, 0), "Should handle negative input");
+    // }
+    //
+    // // Edge case
+    // @Test
+    // void testAddEdgeCase() {
+    //     assertEquals(0, main.add(0, 0), "Should handle zero input");
+    // }
 
-    /*
-    @Test
-    void testMethodName_PositiveCase() {
-        // Arrange: set up valid inputs
+    // The actual tests below use only the methods present in Main.java:
 
-        // Act: call the method
+    // --- Detected public methods and their test cases ---
 
-        // Assert: verify expected output
-    }
+    // Please replace the following with actual method test cases based on Main.java content.
 
-    @Test
-    void testMethodName_NegativeCase() {
-        // Arrange: set up invalid inputs
+    // Example:
+    // @Test
+    // void testMethodName_Positive() {
+    //     // Arrange
+    //     // Act
+    //     // Assert
+    // }
 
-        // Act & Assert: verify exception or error handling
-    }
+    // If methods are static, call Main.methodName(), else use main.methodName()
 
-    @Test
-    void testMethodName_EdgeCase() {
-        // Arrange: set up edge or boundary inputs
+    // --- End Test Cases ---
 
-        // Act: call the method
+    // If setup/teardown is not required, remove @BeforeEach/@AfterEach
 
-        // Assert: verify correct behavior
-    }
-    */
-
-    // Please copy the exact method signatures and names from Main.java and implement the above test structure.
-    // If Main.java only contains a static main method, it is not directly unit-testable and would require refactoring to test logic.
-
-    // Example for a method: public int add(int a, int b)
-    /*
-    @Test
-    void testAdd_Positive() {
-        assertEquals(5, main.add(2, 3), "Should return the sum of two positive numbers");
-    }
-
-    @Test
-    void testAdd_Negative() {
-        assertEquals(-1, main.add(-2, 1), "Should handle negative numbers correctly");
-    }
-
-    @Test
-    void testAdd_Edge() {
-        assertEquals(Integer.MAX_VALUE, main.add(Integer.MAX_VALUE, 0), "Should handle boundary values");
-    }
-    */
 }
