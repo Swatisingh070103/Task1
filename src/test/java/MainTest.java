@@ -3,36 +3,61 @@
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-// If Main is in a package, add the package statement here
-
+// Assuming Main is in the default package (no package declaration)
 public class MainTest {
 
-    // Since Main.java is likely to have a main method, let's check its class and methods.
-    // The following assumes Main contains a public static void main(String[] args) method.
-    // No other public methods will be tested unless present in the actual file.
+    private Main main;
 
-    // Test for the main method (standard Java main method)
+    @BeforeEach
+    void setUp() {
+        main = new Main();
+    }
+
+    @AfterEach
+    void tearDown() {
+        main = null;
+    }
+
+    // Test for main(String[] args) - Standard Java entry point
+    // Since it's static and void, we can only test that it doesn't throw exceptions with sample args.
     @Test
-    void testMainWithNullArgs() {
-        // Should not throw an exception if args is null
-        assertDoesNotThrow(() -> Main.main(null), "main should handle null argument array");
+    void testMain_withValidArgs_shouldNotThrow() {
+        String[] args = {"test", "input"};
+        assertDoesNotThrow(() -> Main.main(args));
     }
 
     @Test
-    void testMainWithEmptyArgs() {
-        // Should not throw an exception if args is an empty array
-        assertDoesNotThrow(() -> Main.main(new String[]{}), "main should handle empty argument array");
+    void testMain_withNullArgs_shouldNotThrow() {
+        // Edge case: null input
+        assertDoesNotThrow(() -> Main.main(null));
     }
 
     @Test
-    void testMainWithSampleArgs() {
-        // Should not throw an exception for typical arguments
-        assertDoesNotThrow(() -> Main.main(new String[]{"arg1", "arg2"}), "main should handle sample arguments");
+    void testMain_withEmptyArgs_shouldNotThrow() {
+        // Edge case: empty array
+        assertDoesNotThrow(() -> Main.main(new String[]{}));
     }
 
-    // No setup or teardown needed as main is static and has no state
+    // If there are other public methods in Main.java, add their tests below.
+    // For example, if Main.java has:
+    // public int add(int a, int b) { return a + b; }
+    // The following tests would be generated:
 
-    // If Main has other public methods, add tests below using their exact names and signatures.
-    // For each method, create positive, negative, and edge case tests.
-    // If there are no other public methods, only the main method is tested.
+    // @Test
+    // void testAdd_withPositiveNumbers() {
+    //     assertEquals(5, main.add(2, 3));
+    // }
+
+    // @Test
+    // void testAdd_withNegativeNumbers() {
+    //     assertEquals(-5, main.add(-2, -3));
+    // }
+
+    // @Test
+    // void testAdd_withZero() {
+    //     assertEquals(2, main.add(2, 0));
+    // }
+
+    // Add more tests for each public method as present in Main.java
+
 }
