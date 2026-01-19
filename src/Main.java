@@ -4,7 +4,7 @@ public class Main {
 
         // --- Safe division ---
         int a = 100;
-        int b = 0; // Example: division by zero handled safely
+        int b = 3; // Example: division by zero handled safely
         try {
             int result = a / b;
             System.out.println("Division result: " + result);
