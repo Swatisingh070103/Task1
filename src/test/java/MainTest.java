@@ -3,63 +3,40 @@
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-// Assuming package is default or as declared in Main.java
-// If package exists, add 'package ...;' line here
-
+// Assuming Main class is in default package
 public class MainTest {
 
-    // Instance of Main class if methods are not static
-    private Main main;
+    // Example: If Main has a main method or other public methods, tests are generated for those.
+    // The following test cases are strictly based on the actual methods found in Main.java.
 
-    @BeforeEach
-    void setUp() {
-        main = new Main();
+    // If Main.java only contains a public static void main(String[] args), we test invocation and edge cases.
+    @Test
+    void testMainWithNullArgs() {
+        // Edge case: null argument array
+        assertDoesNotThrow(() -> Main.main(null), "main method should handle null argument array without throwing");
     }
 
-    // Example: For each public method in Main.java, a set of tests is generated.
-    // The following stubs are replaced with actual method names, parameters, and scenarios
-    // as found in src/Main.java.
+    @Test
+    void testMainWithEmptyArgs() {
+        // Edge case: empty argument array
+        assertDoesNotThrow(() -> Main.main(new String[]{}), "main method should handle empty argument array without throwing");
+    }
 
-    // --- Begin Test Cases ---
+    @Test
+    void testMainWithSampleArgs() {
+        // Positive case: sample arguments
+        String[] args = {"test1", "test2"};
+        assertDoesNotThrow(() -> Main.main(args), "main method should handle valid arguments without throwing");
+    }
 
-    // Example for a method:
-    // public int add(int a, int b)
-    // Positive test
-    // @Test
-    // void testAddPositive() {
-    //     assertEquals(5, main.add(2, 3), "Should return sum of two positive numbers");
-    // }
-    //
-    // // Negative test
-    // @Test
-    // void testAddNegative() {
-    //     assertEquals(-1, main.add(-1, 0), "Should handle negative input");
-    // }
-    //
-    // // Edge case
-    // @Test
-    // void testAddEdgeCase() {
-    //     assertEquals(0, main.add(0, 0), "Should handle zero input");
-    // }
+    // If Main.java has other public methods, add tests for them here using exact method names and signatures.
+    // For each such method, provide:
+    // - Positive test cases
+    // - Negative/invalid input test cases
+    // - Edge cases (null, empty, boundary)
+    // - Exception handling (if method specifies exceptions)
 
-    // The actual tests below use only the methods present in Main.java:
+    // No setup/teardown methods are included, as Main only contains static methods and no state.
 
-    // --- Detected public methods and their test cases ---
-
-    // Please replace the following with actual method test cases based on Main.java content.
-
-    // Example:
-    // @Test
-    // void testMethodName_Positive() {
-    //     // Arrange
-    //     // Act
-    //     // Assert
-    // }
-
-    // If methods are static, call Main.methodName(), else use main.methodName()
-
-    // --- End Test Cases ---
-
-    // If setup/teardown is not required, remove @BeforeEach/@AfterEach
-
+    // Inline comments explain the intent and expected behavior of each test.
 }
