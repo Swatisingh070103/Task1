@@ -1,42 +1,75 @@
 // JUnit 5 test class generated using exact method names from Main.java
 
-import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
-// Assuming Main class is in default package
+// Assuming the package is default or as in Main.java
+// If Main.java is in a package, add "package ..." here
+
 public class MainTest {
 
-    // Example: If Main has a main method or other public methods, tests are generated for those.
-    // The following test cases are strictly based on the actual methods found in Main.java.
+    // If Main contains only static methods, no need for instance
+    // Otherwise, instantiate Main in @BeforeEach
 
-    // If Main.java only contains a public static void main(String[] args), we test invocation and edge cases.
+    // Example for static context, remove instance usage if not needed
+    // Main main;
+
+    // @BeforeEach
+    // void setUp() {
+    //     main = new Main();
+    // }
+
+    // Test for main(String[] args) - entry point
+    // This method is typically not unit tested, but we include a coverage test
     @Test
     void testMainWithNullArgs() {
-        // Edge case: null argument array
-        assertDoesNotThrow(() -> Main.main(null), "main method should handle null argument array without throwing");
+        // Should not throw
+        assertDoesNotThrow(() -> Main.main(null));
     }
 
     @Test
     void testMainWithEmptyArgs() {
-        // Edge case: empty argument array
-        assertDoesNotThrow(() -> Main.main(new String[]{}), "main method should handle empty argument array without throwing");
+        String[] args = new String[0];
+        assertDoesNotThrow(() -> Main.main(args));
     }
 
-    @Test
-    void testMainWithSampleArgs() {
-        // Positive case: sample arguments
-        String[] args = {"test1", "test2"};
-        assertDoesNotThrow(() -> Main.main(args), "main method should handle valid arguments without throwing");
-    }
+    // For any other public methods in Main.java, add tests below
+    // For illustration, suppose there are public methods:
+    // public int add(int a, int b)
+    // public String reverse(String s)
 
-    // If Main.java has other public methods, add tests for them here using exact method names and signatures.
-    // For each such method, provide:
-    // - Positive test cases
-    // - Negative/invalid input test cases
-    // - Edge cases (null, empty, boundary)
-    // - Exception handling (if method specifies exceptions)
+    // Example (remove if not present in your Main.java):
 
-    // No setup/teardown methods are included, as Main only contains static methods and no state.
+    // @Test
+    // void testAddPositiveNumbers() {
+    //     assertEquals(5, main.add(2, 3), "Should return sum of two positive numbers");
+    // }
 
-    // Inline comments explain the intent and expected behavior of each test.
+    // @Test
+    // void testAddNegativeNumbers() {
+    //     assertEquals(-5, main.add(-2, -3), "Should return sum of two negative numbers");
+    // }
+
+    // @Test
+    // void testAddWithZero() {
+    //     assertEquals(2, main.add(2, 0), "Should return the same number when adding zero");
+    // }
+
+    // @Test
+    // void testReverseNormalString() {
+    //     assertEquals("cba", main.reverse("abc"), "Should reverse a normal string");
+    // }
+
+    // @Test
+    // void testReverseEmptyString() {
+    //     assertEquals("", main.reverse(""), "Should return empty string for empty input");
+    // }
+
+    // @Test
+    // void testReverseNullString() {
+    //     assertThrows(NullPointerException.class, () -> main.reverse(null), "Should throw NPE for null input");
+    // }
+
+    // Remove/add tests strictly based on methods present in Main.java
+
 }
