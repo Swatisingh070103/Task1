@@ -1,27 +1,19 @@
 public class Main {
 
     public static void main(String[] args) {
-        int divisionResult = divide(100, 10);
-        printDivisionResult(divisionResult);
-
-        String input = "Hello World";
-        printInputLength(input);
-
-        String userRole = "ADMIN";
-        checkAdminAccess(userRole);
-
+        printDivision(divide(100, 10));
+        printInputLength("Hello World");
+        checkAdminAccess("ADMIN");
         printUser("JohnDoe");
-
-        boolean login = insecurePasswordCheck("admin", "password123");
-        printLoginStatus(login);
+        printLoginStatus(insecurePasswordCheck("admin", "password123"));
     }
 
-    // New public methods
+    // Now each method is public and testable
     public static int divide(int a, int b) {
-        return a / b; // safe division
+        return a / b;
     }
 
-    public static void printDivisionResult(int result) {
+    public static void printDivision(int result) {
         System.out.println("Division result: " + result);
     }
 
