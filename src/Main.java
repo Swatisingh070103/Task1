@@ -4,9 +4,16 @@ public class Main {
 
         // --- Safe division ---
         int a = 100;
-        int b = 10; // Changed from 0 to 10
-        int result = a / b;
-        System.out.println("Division result: " + result);
+        int b = 0; // Changed from 0 to 10
+       int a = 100;
+int b = 0;
+try {
+    int result = a / b;
+    System.out.println("Division result: " + result);
+} catch(Exception e) {
+    System.out.println(e);
+}
+
 
         // --- Safe string handling ---
         String input = "Hello World";
