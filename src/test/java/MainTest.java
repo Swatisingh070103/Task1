@@ -1,63 +1,40 @@
 // JUnit 5 test class generated using exact method names from Main.java
+package test.java;
 
-import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
-// Assuming Main is in the default package (no package declaration)
+// Import the Main class from the default package (no package declaration in Main.java)
+// If Main.java has a package, update the import accordingly.
+
 public class MainTest {
 
-    private Main main;
-
-    @BeforeEach
-    void setUp() {
-        main = new Main();
-    }
-
-    @AfterEach
-    void tearDown() {
-        main = null;
-    }
-
-    // Test for main(String[] args) - Standard Java entry point
-    // Since it's static and void, we can only test that it doesn't throw exceptions with sample args.
-    @Test
-    void testMain_withValidArgs_shouldNotThrow() {
-        String[] args = {"test", "input"};
-        assertDoesNotThrow(() -> Main.main(args));
-    }
+    // Test for the main method
+    // The main method is public static void main(String[] args)
+    // Usually, main methods are tested for successful execution with various arguments.
+    // Since main returns void, we mainly check that no exceptions are thrown.
 
     @Test
-    void testMain_withNullArgs_shouldNotThrow() {
-        // Edge case: null input
+    @DisplayName("Test main() with null argument (edge case)")
+    void testMainWithNull() {
+        // Should not throw any exception if null is handled
         assertDoesNotThrow(() -> Main.main(null));
     }
 
     @Test
-    void testMain_withEmptyArgs_shouldNotThrow() {
-        // Edge case: empty array
-        assertDoesNotThrow(() -> Main.main(new String[]{}));
+    @DisplayName("Test main() with empty argument array (edge case)")
+    void testMainWithEmptyArray() {
+        assertDoesNotThrow(() -> Main.main(new String[] {}));
     }
 
-    // If there are other public methods in Main.java, add their tests below.
-    // For example, if Main.java has:
-    // public int add(int a, int b) { return a + b; }
-    // The following tests would be generated:
+    @Test
+    @DisplayName("Test main() with sample arguments (positive case)")
+    void testMainWithArgs() {
+        String[] args = {"test1", "test2"};
+        assertDoesNotThrow(() -> Main.main(args));
+    }
 
-    // @Test
-    // void testAdd_withPositiveNumbers() {
-    //     assertEquals(5, main.add(2, 3));
-    // }
-
-    // @Test
-    // void testAdd_withNegativeNumbers() {
-    //     assertEquals(-5, main.add(-2, -3));
-    // }
-
-    // @Test
-    // void testAdd_withZero() {
-    //     assertEquals(2, main.add(2, 0));
-    // }
-
-    // Add more tests for each public method as present in Main.java
+    // If there are any other public methods, add tests for them here
+    // No other public methods were detected in Main.java
 
 }
