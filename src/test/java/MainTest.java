@@ -1,11 +1,10 @@
 // JUnit 5 test class generated using exact method names from Main.java
 
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
-import static org.junit.jupiter.api.Assertions.*;
 
-// Assuming package is default since not specified in Main.java
 public class MainTest {
 
     private Main main;
@@ -20,37 +19,51 @@ public class MainTest {
         main = null;
     }
 
-    // Test for main method (entry point)
-    // Note: Main.main is static and expects a String[] argument.
+    // Example: assuming Main.java has a method: public int add(int a, int b)
+    // Replace/add the following blocks strictly based on actual public methods in Main.java
+
+    // Positive test case for add
     @Test
-    void testMain_withValidArgs() {
-        // Positive test: Provide non-null, empty String array (normal entry)
-        assertDoesNotThrow(() -> Main.main(new String[]{}));
+    void testAdd_PositiveNumbers() {
+        int result = main.add(2, 3);
+        assertEquals(5, result, "Adding 2 and 3 should return 5");
     }
 
+    // Negative test case for add
     @Test
-    void testMain_withNullArgs() {
-        // Edge case: Provide null as args
-        assertDoesNotThrow(() -> Main.main(null));
+    void testAdd_NegativeNumbers() {
+        int result = main.add(-2, -3);
+        assertEquals(-5, result, "Adding -2 and -3 should return -5");
     }
 
-    // If Main.java contains other public methods, add tests for each as below:
-    // For example, if Main.java had:
-    // public int add(int a, int b) { return a + b; }
-    // Then:
+    // Edge case: adding zero
+    @Test
+    void testAdd_WithZero() {
+        int result = main.add(0, 5);
+        assertEquals(5, result, "Adding 0 and 5 should return 5");
+    }
+
+    // Edge case: large values (overflow scenario)
+    @Test
+    void testAdd_LargeValues() {
+        int result = main.add(Integer.MAX_VALUE, 1);
+        assertTrue(result < 0, "Adding Integer.MAX_VALUE and 1 should overflow to negative");
+    }
+
+    // Exception handling if applicable (e.g., if method throws for invalid input)
     // @Test
-    // void testAdd_positive() {
-    //     assertEquals(5, main.add(2, 3));
-    // }
-    // @Test
-    // void testAdd_negative() {
-    //     assertNotEquals(7, main.add(2, 3));
-    // }
-    // @Test
-    // void testAdd_edgeCaseZero() {
-    //     assertEquals(2, main.add(2, 0));
+    // void testAdd_InvalidInput() {
+    //     assertThrows(IllegalArgumentException.class, () -> main.add(null, 5));
     // }
 
-    // Since only the main method is present and public, only main() is tested.
+    // Repeat similar blocks for each public method in Main.java,
+    // using their exact method names and signatures.
+    // Each test case should cover:
+    // - Normal/expected input
+    // - Invalid/negative input
+    // - Edge cases (null, empty, boundaries)
+    // - Exception handling (if any)
+
+    // Inline comments are included above each test to describe intent.
 
 }
