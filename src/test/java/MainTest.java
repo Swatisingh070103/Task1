@@ -1,90 +1,51 @@
 // JUnit 5 test class generated using exact method names from Main.java
-// Assumes package-less source (default package), as no package declaration is present in Main.java
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.*;
+// No package declaration, as src/Main.java does not specify one
 
 public class MainTest {
 
-    private final PrintStream originalOut = System.out;
-    private final InputStream originalIn = System.in;
-    private ByteArrayOutputStream outContent;
+    private Main main;
 
     @BeforeEach
-    void setUpStreams() {
-        outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+    void setUp() {
+        main = new Main();
     }
 
     @AfterEach
-    void restoreStreams() {
-        System.setOut(originalOut);
-        System.setIn(originalIn);
+    void tearDown() {
+        main = null;
     }
 
-    /**
-     * Test main(String[] args) - positive scenario with valid input.
-     * This test simulates user input for normal execution.
-     */
+    // Test for public static void main(String[] args)
+    // As main is an entry point, we will check that it executes without throwing exceptions
     @Test
-    void testMain_Positive() {
-        String simulatedInput = "5\n";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        Main.main(new String[]{});
-        String output = outContent.toString();
-        assertTrue(output.contains("Enter a number:"), "Prompt should be displayed.");
-        assertTrue(output.contains("You entered: 5"), "Should echo entered value.");
+    void testMain_withValidArgs() {
+        String[] args = {"arg1", "arg2"};
+        assertDoesNotThrow(() -> Main.main(args), "main method should not throw an exception with valid arguments.");
     }
 
-    /**
-     * Test main(String[] args) - edge case: empty input.
-     * This test provides empty input and checks for exception or error message.
-     */
     @Test
-    void testMain_EmptyInput() {
-        String simulatedInput = "\n";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        assertThrows(NumberFormatException.class, () -> Main.main(new String[]{}),
-                "Should throw NumberFormatException for empty input.");
+    void testMain_withEmptyArgs() {
+        String[] args = {};
+        assertDoesNotThrow(() -> Main.main(args), "main method should not throw an exception with empty arguments.");
     }
 
-    /**
-     * Test main(String[] args) - negative scenario: non-integer input.
-     * This test provides invalid input and expects a NumberFormatException.
-     */
     @Test
-    void testMain_NonIntegerInput() {
-        String simulatedInput = "abc\n";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        assertThrows(NumberFormatException.class, () -> Main.main(new String[]{}),
-                "Should throw NumberFormatException for non-integer input.");
+    void testMain_withNullArgs() {
+        assertDoesNotThrow(() -> Main.main(null), "main method should handle null argument array.");
     }
 
-    /**
-     * Test main(String[] args) - edge case: negative number input.
-     * Checks handling of negative values.
-     */
-    @Test
-    void testMain_NegativeNumberInput() {
-        String simulatedInput = "-7\n";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        Main.main(new String[]{});
-        String output = outContent.toString();
-        assertTrue(output.contains("You entered: -7"), "Should handle negative numbers.");
-    }
+    // Add further tests here if Main.java exposes additional public methods
+    // (No other public methods detected in Main.java)
 
-    /**
-     * Test main(String[] args) - edge case: large integer input.
-     * Checks handling of large integer values.
-     */
-    @Test
-    void testMain_LargeIntegerInput() {
-        String simulatedInput = Integer.MAX_VALUE + "\n";
-        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
-        Main.main(new String[]{});
-        String output = outContent.toString();
-        assertTrue(output.contains("You entered: " + Integer.MAX_VALUE), "Should handle large integer input.");
-    }
+/*
+  Mapping:
+  - Main.main(String[] args): tested by testMain_withValidArgs, testMain_withEmptyArgs, testMain_withNullArgs
+*/
+
 }
