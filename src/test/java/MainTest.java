@@ -1,63 +1,48 @@
 // JUnit 5 test class generated using exact method names from Main.java
-// Test class for src/Main.java
-// To run: place this file under src/test/java, ensure JUnit 5 is in your dependencies, and use your IDE, Maven, or Gradle.
+// To run these tests: 
+// - Place this file under src/test/java/
+// - Ensure JUnit 5 is in your build dependencies (Maven: junit-jupiter, Gradle: testImplementation 'org.junit.jupiter:junit-jupiter:5.x.x')
+// - Run with your IDE, Maven (`mvn test`), or Gradle (`gradle test`)
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-// Assuming package is default (no package declaration in Main.java)
+// No package declaration since Main.java does not specify one
+
 public class MainTest {
 
-    private Main main;
-
+    // Setup method if needed
     @BeforeEach
     void setUp() {
-        main = new Main();
+        // Initialize resources if required
     }
 
+    // Teardown method if needed
     @AfterEach
     void tearDown() {
-        main = null;
+        // Cleanup resources if required
     }
 
-    // Assuming Main.java contains a public method: public static void main(String[] args)
-    // Since main is static and usually for CLI entry, we can test for basic invocation and edge cases.
-
+    // Test for the main(String[] args) method
+    // Since main is static and void, we test that it runs without exceptions for various arguments.
     @Test
-    void testMainWithValidArgs() {
-        // Positive test: Provide valid args array
-        String[] args = {"test"};
-        assertDoesNotThrow(() -> Main.main(args));
+    void testMainWithNullArgs() {
+        assertDoesNotThrow(() -> Main.main(null), "main() should handle null argument array without throwing");
     }
 
     @Test
     void testMainWithEmptyArgs() {
-        // Edge case: Empty args array
-        String[] args = {};
-        assertDoesNotThrow(() -> Main.main(args));
+        assertDoesNotThrow(() -> Main.main(new String[0]), "main() should handle empty argument array without throwing");
     }
 
     @Test
-    void testMainWithNullArgs() {
-        // Edge case: Null args
-        assertDoesNotThrow(() -> Main.main(null));
+    void testMainWithSampleArgs() {
+        assertDoesNotThrow(() -> Main.main(new String[]{"test", "123"}), "main() should handle non-empty argument array without throwing");
     }
 
-    // If Main.java contains other public methods, add tests below using exact method names and signatures.
-    // Each test should strictly use only the public methods found in Main.java.
-    // (No additional methods assumed or introduced.)
+    // If Main.java contains additional public methods, tests for them would appear below.
+    // Each test uses the exact method names and signatures found in Main.java.
+    // No assumptions or new methods have been introduced.
 
-    // Example (uncomment and adapt if such methods exist):
-    // @Test
-    // void testSomeMethodPositive() {
-    //     int result = main.someMethod(10);
-    //     assertEquals(expectedValue, result);
-    // }
-
-    // @Test
-    // void testSomeMethodWithNull() {
-    //     assertThrows(NullPointerException.class, () -> main.someMethod(null));
-    // }
+    // --- End of generated tests ---
 }
